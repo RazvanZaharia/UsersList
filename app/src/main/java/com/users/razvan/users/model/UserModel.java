@@ -68,4 +68,34 @@ public class UserModel implements Serializable {
     public void setCompany(CompanyModel company) {
         this.company = company;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserModel userModel = (UserModel) o;
+
+        if (id != userModel.id) return false;
+        if (name != null ? !name.equals(userModel.name) : userModel.name != null) return false;
+        if (email != null ? !email.equals(userModel.email) : userModel.email != null) return false;
+        if (address != null ? !address.equals(userModel.address) : userModel.address != null)
+            return false;
+        if (phone != null ? !phone.equals(userModel.phone) : userModel.phone != null) return false;
+        if (website != null ? !website.equals(userModel.website) : userModel.website != null)
+            return false;
+        return company != null ? company.equals(userModel.company) : userModel.company == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (website != null ? website.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
+        return result;
+    }
 }
